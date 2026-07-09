@@ -1535,3 +1535,200 @@ footer {
   from { transform: translate(-30%, -50%); }
   to   { transform: translate(-70%, -50%); }
 }
+
+/* ============================================================
+   FINAL TYPOGRAPHY TUNE — between oversized and too-small
+   ============================================================ */
+
+/* Keep all visible site text on Quicksand */
+body,
+button,
+input,
+textarea,
+select,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div {
+  font-family: var(--font);
+}
+
+/* Desktop nav stays centered, with bold Quicksand links */
+.site-nav-inner {
+  justify-content: center;
+}
+
+.site-nav-links a {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* H2s: larger than the original/GitHub CSS, smaller than the oversized pass */
+.section-title,
+.about-bio-panel .section-title {
+  font-size: clamp(2.15rem, 4vw, 3.15rem);
+  line-height: 0.98;
+  letter-spacing: 0.025em;
+}
+
+/* Uniform readable text scale: band paragraph and music player match */
+.about-bio-copy,
+.contact-desc,
+.player-title,
+.track-name,
+.video-feature-title {
+  font-size: 1.16rem;
+  line-height: 1.85;
+}
+
+.player-title,
+.track-name,
+.video-feature-title {
+  line-height: 1.35;
+}
+
+/* Supporting UI text: bumped, but not huge */
+.hero-tagline {
+  max-width: none;
+  width: auto;
+  white-space: nowrap;
+  font-size: 1.14rem;
+  line-height: 1.65;
+}
+
+.hero-actions {
+  gap: 1.65rem;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+}
+
+.btn-primary,
+.btn-ghost {
+  font-size: 0.78rem;
+}
+
+.player-now {
+  font-size: 0.66rem;
+}
+
+.track-tag,
+.track-dur,
+.track-num,
+.p-times {
+  font-size: 0.72rem;
+}
+
+.video-queue-title {
+  font-size: 0.84rem;
+}
+
+.photo-caption {
+  font-size: 0.72rem;
+}
+
+.panel-caption-name {
+  font-size: 1.32rem;
+}
+
+.panel-label-vert {
+  font-size: 0.64rem;
+}
+
+.panel-role-tag {
+  font-size: 0.68rem;
+}
+
+.footer-logo {
+  font-size: 0.96rem;
+}
+
+.footer-copy {
+  font-size: 0.68rem;
+}
+
+/* Mobile keeps hamburger/dropdown right-aligned, but does not shrink text as hard */
+@media (max-width: 768px) {
+  .site-nav-inner {
+    justify-content: flex-end;
+  }
+
+  .nav-toggle {
+    margin-left: auto;
+  }
+
+  .site-nav-links {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .site-nav-links a {
+    text-align: right;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .section-title,
+  .about-bio-panel .section-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem);
+  }
+
+  .about-bio-copy,
+  .contact-desc,
+  .player-title,
+  .track-name,
+  .video-feature-title {
+    font-size: 1.05rem;
+  }
+
+  .hero-tagline {
+    max-width: 30rem;
+    white-space: normal;
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    gap: 1.15rem;
+  }
+
+  .track-tag,
+  .track-dur,
+  .track-num,
+  .p-times {
+    font-size: 0.66rem;
+  }
+
+  .video-queue-title {
+    font-size: 0.8rem;
+  }
+
+  .photo-caption {
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-title,
+  .about-bio-panel .section-title {
+    font-size: 1.65rem;
+  }
+
+  .hero-tagline {
+    white-space: normal;
+    font-size: 0.98rem;
+  }
+}
