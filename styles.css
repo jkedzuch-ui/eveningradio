@@ -2,6 +2,18 @@
    EVENING RADIO — FULL CSS
    ============================================================ */
 
+/* ============================================================
+   Local Fonts
+   ============================================================ */
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --black: #070707;
   --dark: #0b0b0b;
