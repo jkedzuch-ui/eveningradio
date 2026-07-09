@@ -2036,3 +2036,71 @@ div {
     max-width: 17.5rem;
   }
 }
+
+/* ============================================================
+   FINAL POLISH — section glow, separators, and mobile nav
+   ============================================================ */
+
+/* Make the blue/red page glow slightly more visible, especially the blue side. */
+body::before {
+  background:
+    radial-gradient(ellipse 72% 58% at 0% 68%, rgba(42,106,208,0.18) 0%, rgba(42,106,208,0.09) 34%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 100% 30%, rgba(192,37,53,0.10) 0%, transparent 62%);
+}
+
+/* Let the global red/blue glow show through The Band section instead of being blocked by solid black panels. */
+.about-section,
+.about-bio-panel {
+  background: transparent;
+}
+
+/* Keep the band content above the global background effect. */
+.about-row {
+  position: relative;
+  z-index: 1;
+}
+
+/* Replicate the Booking top gradient line between each major section. */
+.about-section,
+.section,
+#merch,
+#contact {
+  position: relative;
+}
+
+.about-section::after,
+#music::after,
+#photos::after,
+#videos::after,
+#merch::after,
+#contact::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, rgba(42,106,208,0.32) 30%, rgba(192,37,53,0.32) 70%, transparent);
+}
+
+/* Mobile nav: hamburger left-aligned, opened menu text centered. */
+@media (max-width: 768px) {
+  .site-nav-inner {
+    justify-content: flex-start;
+  }
+
+  .nav-toggle {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .site-nav-links {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-nav-links a {
+    text-align: center;
+  }
+}
