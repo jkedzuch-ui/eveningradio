@@ -2244,3 +2244,48 @@ body::before {
     box-shadow: none !important;
   }
 }
+
+/* ============================================================
+   FINAL FIX — hide closed mobile menu cleanly
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Closed state: no padding, no visible text, no overlap with hero. */
+  .site-nav-links {
+    padding: 0 !important;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Open state: spacing only applies when the menu is actually open. */
+  .site-nav-links.is-open {
+    max-height: 440px !important;
+    padding: 1.2rem 0 1.25rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .site-nav-links a {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.5rem var(--content-inline) !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+  }
+
+  /* Keep hamburger left-aligned. */
+  .site-nav-inner {
+    justify-content: flex-start !important;
+  }
+
+  .nav-toggle {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+}
