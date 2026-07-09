@@ -13,7 +13,7 @@
   --offwhite: #e8e8e8;
   --text: #a0a0a0;
   --muted: #7a7a7a;
-  --font: 'Quicksand', sans-serif;
+  --font: 'Quicksand', 'Century Gothic', 'Poppins', sans-serif;
   --r: 2px;
 
   --space-1: 0.25rem;
@@ -40,7 +40,7 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 100%; }
 
 body {
   background: var(--black);
@@ -430,7 +430,7 @@ hr.rule {
   display: flex;
   align-items: stretch;
   min-height: 620px;
-  max-width: 1440px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -584,7 +584,7 @@ hr.rule {
 
 #music { background: var(--black); }
 
-.player-wrap { max-width: 1000px; margin: 0 auto; }
+.player-wrap { max-width: 1080px; margin: 0 auto; }
 
 .tracklist {
   overflow: hidden;
@@ -830,7 +830,7 @@ hr.rule {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -929,7 +929,7 @@ hr.rule {
   display: flex;
   overflow: hidden;
   height: 500px;
-  max-width: 1440px;
+  max-width: 1080px;
   margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: var(--r);
