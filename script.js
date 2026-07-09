@@ -97,58 +97,44 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(iframe);
   })();
 
-  // ── HERO VIDEO: DELAY LOAD FOR BETTER MOBILE PERFORMANCE ──
-  (function () {
-    function loadHeroVideo() {
-      const video = document.getElementById('heroVideo');
-      if (!video || video.dataset.loaded === 'true') return;
+ // ── HERO VIDEO: DOWNLOAD EARLY, PLAY AFTER PAGE IS READY ──
+(function () {
+  function startHeroVideo() {
+    const video = document.getElementById('heroVideo');
+    if (!video || video.dataset.started === 'true') return;
 
-      const source = document.createElement('source');
+    video.dataset.started = 'true';
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
 
-      source.src = window.matchMedia('(max-width: 768px)').matches
-        ? 'video/hero-background-mobile.mp4'
-        : 'video/hero-background.mp4';
+    const playPromise = video.play();
 
-      source.type = 'video/mp4';
-
-      video.appendChild(source);
-      video.dataset.loaded = 'true';
-
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-
-      video.addEventListener('canplay', function () {
-        video.classList.add('is-playing');
-
-        const playPromise = video.play();
-
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(function () {
-            // If autoplay is blocked, keep the poster image visible.
-          });
-        }
-      }, { once: true });
-
-      video.load();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {
+        // If autoplay is blocked, keep the poster image visible.
+      });
     }
 
-    window.addEventListener('load', function () {
-      setTimeout(loadHeroVideo, 800);
-    });
+    video.classList.add('is-playing');
+  }
 
-    document.addEventListener('visibilitychange', function () {
-      const video = document.getElementById('heroVideo');
+  window.addEventListener('load', function () {
+    setTimeout(startHeroVideo, 800);
+  });
 
-      if (!document.hidden && video && video.dataset.loaded === 'true' && video.paused) {
-        const playPromise = video.play();
+  document.addEventListener('visibilitychange', function () {
+    const video = document.getElementById('heroVideo');
 
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(function () {});
-        }
+    if (!document.hidden && video && video.dataset.started === 'true' && video.paused) {
+      const playPromise = video.play();
+
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {});
       }
-    });
-  })();
+    }
+  });
+})();
 
   // ── MUSIC PLAYER ──
   (function () {

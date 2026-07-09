@@ -15,7 +15,6 @@
 <meta property="og:image" content="https://eveningradio.com/images/hero-frame.jpg">
 
 <link rel="icon" href="./images/favicon.png?v=2" type="image/png">
-<link rel="shortcut icon" href="./images/favicon.png?v=2" type="image/png">
 <link rel="apple-touch-icon" href="./images/favicon.png?v=2">
 
 <link rel="preload" as="image" href="images/hero-frame.jpg" fetchpriority="high">
@@ -63,8 +62,11 @@
 <!-- Hero -->
 <section class="hero" id="top">
   <div class="hero-video-wrap">
-   <video id="heroVideo" muted loop playsinline preload="none" poster="images/hero-frame.jpg"></video>
-  </div>
+<video id="heroVideo" muted loop playsinline preload="auto" poster="images/hero-frame.jpg">
+  <source src="video/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+  <source src="video/hero-background.mp4" type="video/mp4">
+</video>
+    </div>
   <div class="hero-fade-top"></div>
   <div class="hero-fade-bottom"></div>
   <div class="hero-fade-left"></div>
