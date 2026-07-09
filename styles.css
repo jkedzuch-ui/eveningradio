@@ -8,8 +8,8 @@
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('./fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
-  font-weight: 300 900;
+  src: url('./fonts/quicksand-variable.woff2') format('woff2');
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
