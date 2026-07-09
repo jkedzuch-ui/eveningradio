@@ -13,7 +13,7 @@
   --offwhite: #e8e8e8;
   --text: #a0a0a0;
   --muted: #7a7a7a;
-  --font: 'Quicksand', 'Century Gothic', 'Poppins', sans-serif;
+  --font: 'Quicksand', sans-serif;
   --r: 2px;
 
   --space-1: 0.25rem;
@@ -1181,173 +1181,6 @@ footer {
   color: var(--text);
 }
 
-
-/* ============================================================
-   Kartra visual match + section alignment overrides
-   ============================================================ */
-
-:root {
-  --section-max: 1080px;
-}
-
-/* Keep all post-hero sections on the same black base */
-.about-section,
-.section,
-#music,
-#photos,
-#videos,
-#merch,
-#contact {
-  background: var(--black);
-}
-
-/* Music / Photos / Videos headings and content align to Merch */
-#music,
-#photos,
-#videos {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#music > .section-header,
-#photos > .section-header,
-#videos > .section-header,
-#merch .section-header,
-#contact > .section-header {
-  max-width: var(--section-max);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: var(--section-header-gap);
-}
-
-#music .player-wrap,
-#photos .photo-accordion,
-#videos .video-theater,
-#merch .merch-inner {
-  max-width: var(--section-max);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Desktop nav stays centered, but matches the larger live Kartra typography */
-.site-nav-inner {
-  justify-content: center;
-}
-
-.site-nav-links a {
-  font-size: 1.12rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-/* Section headings: larger visual scale like live Kartra */
-.section-title,
-.about-bio-panel .section-title {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  line-height: 1;
-  letter-spacing: 0.03em;
-}
-
-/* About copy: live Kartra uses much larger readable copy */
-.about-bio-copy {
-  font-size: clamp(1.45rem, 2vw, 1.8rem);
-  line-height: 1.95;
-  letter-spacing: 0.01em;
-}
-
-.about-bio-panel {
-  flex: 0 0 430px;
-}
-
-/* Supporting readable copy */
-.hero-tagline,
-.contact-desc {
-  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-  line-height: 1.8;
-}
-
-/* Buttons */
-.btn-primary,
-.btn-ghost {
-  font-size: 0.82rem;
-}
-
-.hero-actions .btn-primary,
-.hero-actions .btn-ghost {
-  font-size: 0.78rem;
-}
-
-/* Music */
-.player-now {
-  font-size: 0.72rem;
-}
-
-.player-title {
-  font-size: 1.35rem;
-}
-
-.track-name {
-  font-size: 1.2rem;
-}
-
-.track-tag,
-.track-dur,
-.track-num,
-.p-times {
-  font-size: 0.82rem;
-}
-
-/* Videos */
-.video-feature-title {
-  font-size: 1.3rem;
-}
-
-.video-queue-title {
-  font-size: 0.95rem;
-}
-
-/* Photos */
-.photo-caption {
-  font-size: 0.85rem;
-}
-
-/* About panels */
-.panel-label-vert {
-  font-size: 0.72rem;
-}
-
-.panel-caption-name {
-  font-size: 1.4rem;
-}
-
-.panel-role-tag {
-  font-size: 0.76rem;
-}
-
-/* Merch / footer readable scale */
-.merch-card-title,
-.merch-card-price {
-  font-size: 1rem;
-}
-
-.merch-card-variants,
-.merch-card-buy {
-  font-size: 0.82rem;
-}
-
-.contact-email-link {
-  font-size: 1rem;
-}
-
-.footer-logo {
-  font-size: 1.05rem;
-}
-
-.footer-copy {
-  font-size: 0.78rem;
-}
-
 /* ============================================================
    Responsive
    ============================================================ */
@@ -1471,11 +1304,149 @@ footer {
 
 
 /* ============================================================
-   Final mobile overrides
+   Final Kartra-matched adjustments
    ============================================================ */
 
+:root {
+  --section-max: 1080px;
+}
+
+/* Keep all post-hero sections on the same black base */
+.about-section,
+.section,
+#music,
+#photos,
+#videos,
+#merch,
+#contact {
+  background: var(--black);
+}
+
+/* Desktop nav remains centered */
+.site-nav-inner {
+  justify-content: center;
+}
+
+/* Nav uses Quicksand and stays bold */
+.site-nav-links a {
+  font-family: var(--font);
+  font-weight: 700;
+}
+
+/* Match Merch's horizontal rhythm for Music, Photos, Videos, and Contact headers */
+#music,
+#photos,
+#videos {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#music > .section-header,
+#photos > .section-header,
+#videos > .section-header,
+#merch .section-header,
+#contact > .section-header {
+  max-width: var(--section-max);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--section-header-gap);
+}
+
+#music .player-wrap,
+#photos .photo-accordion,
+#videos .video-theater,
+#merch .merch-inner {
+  max-width: var(--section-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Restore Kartra CSS scale after the earlier oversized pass */
+.section-title,
+.about-bio-panel .section-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.about-bio-copy,
+.contact-desc {
+  font-size: 1rem;
+  line-height: 1.95;
+}
+
+/* Keep the band paragraph and main music text visually consistent */
+.player-title,
+.track-name {
+  font-size: 1rem;
+}
+
+.player-now {
+  font-size: 0.54rem;
+}
+
+.track-tag {
+  font-size: 0.56rem;
+}
+
+.track-dur,
+.track-num {
+  font-size: 0.68rem;
+}
+
+.p-times {
+  font-size: 0.6rem;
+}
+
+.video-feature-title {
+  font-size: 1rem;
+}
+
+.video-queue-title {
+  font-size: 0.7rem;
+}
+
+.photo-caption {
+  font-size: 0.6rem;
+}
+
+.panel-label-vert {
+  font-size: 0.55rem;
+}
+
+.panel-caption-name {
+  font-size: 1.22rem;
+}
+
+.panel-role-tag {
+  font-size: 0.6rem;
+}
+
+/* Hero tagline: one line on desktop, with more breathing room between buttons */
+.hero-content {
+  max-width: 1100px;
+}
+
+.hero-tagline {
+  max-width: none;
+  width: auto;
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  gap: 1.35rem;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+}
+
+/* Mobile: hamburger and dropdown right-aligned, desktop unaffected */
 @media (max-width: 768px) {
-  /* Desktop nav remains centered; mobile hamburger is right-aligned */
   .site-nav-inner {
     justify-content: flex-end;
   }
@@ -1491,9 +1462,7 @@ footer {
 
   .site-nav-links a {
     text-align: right;
-    font-size: 1rem;
-    letter-spacing: 0;
-    text-transform: none;
+    font-weight: 700;
   }
 
   #music,
@@ -1509,57 +1478,56 @@ footer {
   #videos > .section-header,
   #merch .section-header,
   #contact > .section-header {
-    margin-bottom: 1rem;
+    margin-bottom: var(--section-header-gap-mobile);
   }
 
   .section-title,
   .about-bio-panel .section-title {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-    line-height: 1;
+    font-size: clamp(1.2rem, 6vw, 1.7rem);
   }
 
-  .about-bio-copy {
-    font-size: 1.18rem;
-    line-height: 1.75;
-  }
-
-  .hero-tagline,
-  .contact-desc {
-    font-size: 1.05rem;
-  }
-
+  .about-bio-copy,
+  .contact-desc,
+  .player-title,
   .track-name {
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+
+  .hero-tagline {
+    max-width: 26rem;
+    white-space: normal;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    gap: 1rem;
   }
 
   .track-tag,
   .track-dur,
-  .track-num,
-  .p-times {
-    font-size: 0.68rem;
-  }
-
-  .video-queue-title {
-    font-size: 0.84rem;
+  .track-num {
+    font-size: 0.52rem;
   }
 
   .photo-caption {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
+  }
+
+  .video-queue-title {
+    font-size: 0.72rem;
   }
 }
 
 @media (max-width: 420px) {
   .section-title,
   .about-bio-panel .section-title {
-    font-size: 1.85rem;
-  }
-
-  .about-bio-copy {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .hero-tagline {
-    font-size: 0.98rem;
+    white-space: normal;
+    font-size: 0.9rem;
   }
 }
 
