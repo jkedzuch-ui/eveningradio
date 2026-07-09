@@ -2289,3 +2289,24 @@ body::before {
     margin-right: auto !important;
   }
 }
+
+/* ============================================================
+   FINAL FIX — move open mobile menu links up
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Keep the hamburger in the nav bar, but start the opened menu closer to it. */
+  .site-nav-links {
+    top: calc(var(--nav-height) - 1rem) !important;
+  }
+
+  .site-nav-links.is-open {
+    padding: 0.35rem 0 1rem !important;
+    max-height: 390px !important;
+  }
+
+  .site-nav-links a {
+    padding-top: 0.42rem !important;
+    padding-bottom: 0.42rem !important;
+  }
+}
