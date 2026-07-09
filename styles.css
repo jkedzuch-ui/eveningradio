@@ -1903,3 +1903,46 @@ div {
     letter-spacing: 0.13em;
   }
 }
+
+/* ============================================================
+   Final hero + band paragraph adjustment
+   - Desktop: hero tagline and Band paragraph at 1.6rem
+   - Mobile: scale down and allow wrapping so layout stays clean
+   - Booking eyebrow intentionally unchanged
+   ============================================================ */
+
+@media (min-width: 769px) {
+  .hero-tagline,
+  .about-bio-copy {
+    font-size: 1.6rem;
+    line-height: 1.75;
+  }
+
+  .hero-tagline {
+    width: 100%;
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-tagline,
+  .about-bio-copy {
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+
+  .hero-tagline {
+    width: auto;
+    max-width: 28rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-tagline,
+  .about-bio-copy {
+    font-size: 1.04rem;
+    line-height: 1.6;
+  }
+}
