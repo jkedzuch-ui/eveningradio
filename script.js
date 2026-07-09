@@ -5,8 +5,9 @@
     Object.entries(attrs).forEach(([k, v]) => l.setAttribute(k, v));
     document.head.appendChild(l);
   }
+
   [
-    { rel: 'dns-prefetch', href: 'https://www.youtube.com' },
+    { rel: 'dns-prefetch', href: 'https://www.youtube.com' }
   ].forEach(addLink);
 })();
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   (function () {
     const lazyBgs = document.querySelectorAll('[data-bg]');
     if (!lazyBgs.length) return;
+
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -44,7 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     }, { rootMargin: '200px' });
-    lazyBgs.forEach(function (el) { observer.observe(el); });
+
+    lazyBgs.forEach(function (el) {
+      observer.observe(el);
+    });
   })();
 
   // ── ACCORDION CLICK-TO-ACTIVATE (About / Photos, for touch devices) ──
@@ -52,12 +57,19 @@ document.addEventListener('DOMContentLoaded', function () {
     ['about-accordion', 'photo-accordion'].forEach(function (accClass) {
       const acc = document.querySelector('.' + accClass);
       if (!acc) return;
+
       const panels = acc.querySelectorAll('.about-panel, .photo-panel');
+
       panels.forEach(function (panel) {
         panel.addEventListener('click', function () {
           const alreadyActive = panel.classList.contains('is-active');
-          panels.forEach(function (p) { p.classList.remove('is-active'); });
+
+          panels.forEach(function (p) {
+            p.classList.remove('is-active');
+          });
+
           acc.classList.remove('has-active');
+
           if (!alreadyActive) {
             panel.classList.add('is-active');
             acc.classList.add('has-active');
@@ -71,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
   (function () {
     const iframe = document.getElementById('mainVideoPlayer');
     if (!iframe) return;
+
     const realSrc = iframe.getAttribute('data-src');
     if (!realSrc) return;
 
@@ -80,60 +93,62 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.disconnect();
       }
     }, { rootMargin: '200px' });
+
     observer.observe(iframe);
   })();
 
-// ── HERO VIDEO: DELAY LOAD FOR BETTER MOBILE PERFORMANCE ──
-(function () {
-  function loadHeroVideo() {
-    const video = document.getElementById('heroVideo');
-    if (!video || video.dataset.loaded === 'true') return;
+  // ── HERO VIDEO: DELAY LOAD FOR BETTER MOBILE PERFORMANCE ──
+  (function () {
+    function loadHeroVideo() {
+      const video = document.getElementById('heroVideo');
+      if (!video || video.dataset.loaded === 'true') return;
 
-    const source = document.createElement('source');
+      const source = document.createElement('source');
 
-    source.src = window.matchMedia('(max-width: 768px)').matches
-  ? 'video/hero-background-mobile.mp4'
-  : 'video/hero-background.mp4';
+      source.src = window.matchMedia('(max-width: 768px)').matches
+        ? 'video/hero-background-mobile.mp4'
+        : 'video/hero-background.mp4';
 
-    source.type = 'video/mp4';
+      source.type = 'video/mp4';
 
-    video.appendChild(source);
-    video.dataset.loaded = 'true';
+      video.appendChild(source);
+      video.dataset.loaded = 'true';
 
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
 
-   video.addEventListener('canplay', function () {
-  video.classList.add('is-playing');
+      video.addEventListener('canplay', function () {
+        video.classList.add('is-playing');
 
-  const playPromise = video.play();
+        const playPromise = video.play();
 
-  if (playPromise && typeof playPromise.catch === 'function') {
-    playPromise.catch(function () {
-      // If autoplay is blocked, keep the poster image visible.
-    });
-  }
-}, { once: true });
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function () {
+            // If autoplay is blocked, keep the poster image visible.
+          });
+        }
+      }, { once: true });
 
-video.load();
-
-  window.addEventListener('load', function () {
-    setTimeout(loadHeroVideo, 800);
-  });
-
-  document.addEventListener('visibilitychange', function () {
-    const video = document.getElementById('heroVideo');
-
-    if (!document.hidden && video && video.dataset.loaded === 'true' && video.paused) {
-      const playPromise = video.play();
-
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(function () {});
-      }
+      video.load();
     }
-  });
-})();
+
+    window.addEventListener('load', function () {
+      setTimeout(loadHeroVideo, 800);
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      const video = document.getElementById('heroVideo');
+
+      if (!document.hidden && video && video.dataset.loaded === 'true' && video.paused) {
+        const playPromise = video.play();
+
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function () {});
+        }
+      }
+    });
+  })();
 
   // ── MUSIC PLAYER ──
   (function () {
@@ -142,29 +157,31 @@ video.load();
       { title: 'Turbulence',       tag: 'Studio', dur: '5:17', src: 'audio/turbulence.mp3' },
       { title: 'Looking Down',     tag: 'Studio', dur: '3:31', src: 'audio/looking-down.mp3' },
       { title: 'World We Live In', tag: 'Live',   dur: '4:46', src: 'audio/world-we-live-in.mp3' },
-      { title: 'Wine Song',        tag: 'Live',   dur: '6:57', src: 'audio/wine-song.mp3' },
+      { title: 'Wine Song',        tag: 'Live',   dur: '6:57', src: 'audio/wine-song.mp3' }
     ];
 
-    const listEl      = document.getElementById('trackList');
-    const audio       = document.getElementById('audio');
+    const listEl = document.getElementById('trackList');
+    const audio = document.getElementById('audio');
     if (!listEl || !audio) return;
 
-    const pTitle      = document.getElementById('pTitle');
-    const playBtn     = document.getElementById('playBtn');
-    const iconPlay    = document.getElementById('iconPlay');
-    const iconPause   = document.getElementById('iconPause');
+    const pTitle = document.getElementById('pTitle');
+    const playBtn = document.getElementById('playBtn');
+    const iconPlay = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
     const progressBar = document.getElementById('progressBar');
-    const pCurrent    = document.getElementById('pCurrent');
-    const pTotal      = document.getElementById('pTotal');
-    const volBar      = document.getElementById('volBar');
-    const muteBtn     = document.getElementById('muteBtn');
+    const pCurrent = document.getElementById('pCurrent');
+    const pTotal = document.getElementById('pTotal');
+    const volBar = document.getElementById('volBar');
+    const muteBtn = document.getElementById('muteBtn');
 
-    let currentIdx = 0, playing = false;
+    let currentIdx = 0;
+    let playing = false;
 
     function buildList() {
-      TRACKS.forEach((t, i) => {
+      TRACKS.forEach(function (t, i) {
         const row = document.createElement('div');
         row.className = 'track-row' + (i === 0 ? ' is-active' : '');
+
         row.innerHTML = `
           <div class="track-num">
             <span class="t-idx">${String(i + 1).padStart(2, '0')}</span>
@@ -174,29 +191,40 @@ video.load();
             <div class="track-name">${t.title}</div>
             <div class="track-tag">${t.tag}</div>
           </div>
-          <div class="track-dur">${t.dur}</div>`;
-        row.addEventListener('click', () => selectTrack(i, true));
+          <div class="track-dur">${t.dur}</div>
+        `;
+
+        row.addEventListener('click', function () {
+          selectTrack(i, true);
+        });
+
         listEl.appendChild(row);
       });
     }
 
     function selectTrack(idx, autoplay) {
-      document.querySelectorAll('.track-row').forEach((r, i) =>
-        r.classList.toggle('is-active', i === idx));
+      document.querySelectorAll('.track-row').forEach(function (r, i) {
+        r.classList.toggle('is-active', i === idx);
+      });
+
       currentIdx = idx;
       pTitle.textContent = TRACKS[idx].title;
       audio.src = TRACKS[idx].src;
       audio.load();
-      if (autoplay) { audio.play(); setPlaying(true); }
+
+      if (autoplay) {
+        audio.play();
+        setPlaying(true);
+      }
     }
 
     function setPlaying(val) {
       playing = val;
-      iconPlay.style.display  = val ? 'none' : '';
+      iconPlay.style.display = val ? 'none' : '';
       iconPause.style.display = val ? '' : 'none';
     }
 
-    playBtn.addEventListener('click', () => {
+    playBtn.addEventListener('click', function () {
       if (!audio.src) {
         audio.src = TRACKS[currentIdx].src;
         audio.load();
@@ -204,37 +232,62 @@ video.load();
         setPlaying(true);
         return;
       }
-      playing ? audio.pause() : audio.play();
-      setPlaying(!playing);
+
+      if (playing) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        audio.play();
+        setPlaying(true);
+      }
     });
 
-    document.getElementById('prevBtn').addEventListener('click', () =>
-      selectTrack((currentIdx - 1 + TRACKS.length) % TRACKS.length, playing));
-    document.getElementById('nextBtn').addEventListener('click', () =>
-      selectTrack((currentIdx + 1) % TRACKS.length, playing));
-    audio.addEventListener('ended', () =>
-      selectTrack((currentIdx + 1) % TRACKS.length, true));
+    document.getElementById('prevBtn').addEventListener('click', function () {
+      selectTrack((currentIdx - 1 + TRACKS.length) % TRACKS.length, playing);
+    });
 
-    function fmt(s) { return `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, '0')}`; }
+    document.getElementById('nextBtn').addEventListener('click', function () {
+      selectTrack((currentIdx + 1) % TRACKS.length, playing);
+    });
 
-    audio.addEventListener('timeupdate', () => {
+    audio.addEventListener('ended', function () {
+      selectTrack((currentIdx + 1) % TRACKS.length, true);
+    });
+
+    function fmt(s) {
+      return `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, '0')}`;
+    }
+
+    audio.addEventListener('timeupdate', function () {
       if (!audio.duration) return;
+
       const p = (audio.currentTime / audio.duration) * 100;
+
       progressBar.value = p;
       progressBar.style.background = `linear-gradient(to right,var(--blue-bright) ${p}%,rgba(255,255,255,0.06) ${p}%)`;
       pCurrent.textContent = fmt(audio.currentTime);
     });
-    audio.addEventListener('loadedmetadata', () => { pTotal.textContent = fmt(audio.duration); });
-    progressBar.addEventListener('input', () => {
+
+    audio.addEventListener('loadedmetadata', function () {
+      pTotal.textContent = fmt(audio.duration);
+    });
+
+    progressBar.addEventListener('input', function () {
       if (!audio.duration) return;
+
       audio.currentTime = (progressBar.value / 100) * audio.duration;
       progressBar.style.background = `linear-gradient(to right,var(--blue-bright) ${progressBar.value}%,rgba(255,255,255,0.06) ${progressBar.value}%)`;
     });
 
     audio.volume = 0.85;
-    volBar.addEventListener('input', () => { audio.volume = volBar.value / 100; });
+
+    volBar.addEventListener('input', function () {
+      audio.volume = volBar.value / 100;
+    });
+
     let muted = false;
-    muteBtn.addEventListener('click', () => {
+
+    muteBtn.addEventListener('click', function () {
       muted = !muted;
       audio.muted = muted;
       muteBtn.style.color = muted ? 'rgba(74,74,74,0.45)' : '';
@@ -249,14 +302,19 @@ video.load();
     const items = document.querySelectorAll('.video-queue-item');
     const embedWrap = document.querySelector('.video-theater-main .video-embed');
     const title = document.getElementById('theaterTitle');
+
     if (!items.length || !embedWrap) return;
 
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        items.forEach(i => i.classList.remove('is-active'));
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        items.forEach(function (i) {
+          i.classList.remove('is-active');
+        });
+
         item.classList.add('is-active');
 
         const newFrame = document.createElement('iframe');
+
         newFrame.src = item.dataset.src + '&autoplay=1';
         newFrame.title = item.dataset.title;
         newFrame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
@@ -265,6 +323,7 @@ video.load();
 
         embedWrap.innerHTML = '';
         embedWrap.appendChild(newFrame);
+
         title.textContent = item.dataset.title;
       });
     });
@@ -272,6 +331,8 @@ video.load();
 
   // ── FOOTER YEAR ──
   const yr = document.getElementById('yr');
-  if (yr) yr.textContent = new Date().getFullYear();
+  if (yr) {
+    yr.textContent = new Date().getFullYear();
+  }
 
 });
