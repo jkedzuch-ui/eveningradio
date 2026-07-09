@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const source = document.createElement('source');
 
     source.src = window.matchMedia('(max-width: 768px)').matches
-      ? 'video/hero-background-mobile.mp4'
-      : 'video/hero-background-compressed.mp4';
+  ? 'video/hero-background-mobile.mp4'
+  : 'video/hero-background.mp4';
 
     source.type = 'video/mp4';
 
