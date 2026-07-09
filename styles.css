@@ -1732,3 +1732,174 @@ div {
     font-size: 0.98rem;
   }
 }
+
+/* ============================================================
+   Larger readable copy pass
+   - Keeps H2s balanced
+   - Bumps paragraph + music player copy together
+   - Preserves one-line hero tagline on desktop
+   ============================================================ */
+
+/* Main readable text should feel closer to the live Kartra site */
+.about-bio-copy,
+.contact-desc,
+.player-title,
+.track-name,
+.video-feature-title {
+  font-size: clamp(1.28rem, 1.35vw, 1.46rem);
+  line-height: 1.85;
+}
+
+/* Music player titles need less vertical line-height than paragraph copy */
+.player-title,
+.track-name,
+.video-feature-title {
+  line-height: 1.35;
+}
+
+/* Small music metadata was still too tiny */
+.player-now {
+  font-size: 0.78rem;
+}
+
+.track-tag,
+.track-dur,
+.track-num,
+.p-times {
+  font-size: 0.84rem;
+}
+
+/* Hero tagline: fit on one line on desktop, but keep it readable */
+.hero-tagline {
+  max-width: none;
+  width: min(100%, 760px);
+  font-size: clamp(1.16rem, 1.2vw, 1.32rem);
+  line-height: 1.65;
+  white-space: nowrap;
+}
+
+.hero-actions {
+  gap: 1.25rem;
+}
+
+/* Slight support text bump so captions do not feel disconnected */
+.video-queue-title {
+  font-size: 0.95rem;
+}
+
+.photo-caption {
+  font-size: 0.82rem;
+}
+
+.panel-caption-name {
+  font-size: 1.42rem;
+}
+
+.panel-role-tag {
+  font-size: 0.76rem;
+}
+
+/* Mobile: allow hero tagline to wrap, but keep paragraph/music readable */
+@media (max-width: 768px) {
+  .hero-tagline {
+    width: auto;
+    max-width: 28rem;
+    white-space: normal;
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .about-bio-copy,
+  .contact-desc,
+  .player-title,
+  .track-name,
+  .video-feature-title {
+    font-size: 1.13rem;
+    line-height: 1.65;
+  }
+
+  .player-title,
+  .track-name,
+  .video-feature-title {
+    line-height: 1.35;
+  }
+
+  .track-tag,
+  .track-dur,
+  .track-num,
+  .p-times {
+    font-size: 0.74rem;
+  }
+
+  .player-now {
+    font-size: 0.7rem;
+  }
+
+  .hero-actions {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-tagline {
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .about-bio-copy,
+  .contact-desc,
+  .player-title,
+  .track-name,
+  .video-feature-title {
+    font-size: 1.06rem;
+  }
+}
+
+/* ============================================================
+   CTA button font bump
+   - Keeps hero CTAs readable after the larger copy pass
+   ============================================================ */
+
+.btn-primary,
+.btn-ghost {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  min-height: 44px;
+  height: 44px;
+  min-width: 160px;
+  padding: 0 1.15rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-ghost {
+    font-size: 0.86rem;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    min-height: 42px;
+    height: 42px;
+    min-width: 150px;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    min-height: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+    letter-spacing: 0.13em;
+  }
+}
