@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Evening Radio - Austin Blues Rock Band</title>
+<meta name="description" content="Evening Radio is a five-piece blues-influenced rock band based in Austin, TX. Live music, recordings, and booking info.">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+<link rel="preload" as="image" href="images/hero-frame.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/logo.png" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="#top" class="site-nav-logo">Evening Radio</a>
+    <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="site-nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#contact">Booking</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline preload="metadata" poster="images/hero-frame.jpg" class="is-playing">
+      <source src="video/hero-background.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-fade-top"></div>
+  <div class="hero-fade-bottom"></div>
+  <div class="hero-fade-left"></div>
+  <div class="hero-content">
+    <img class="hero-logo" src="images/logo.png" alt="Evening Radio">
+    <p class="hero-tagline">A five-piece rock band with tight grooves and a little blues.</p>
+    <div class="hero-actions">
+      <a href="#music" class="btn-primary">Listen</a>
+      <a href="#videos" class="btn-ghost">Watch</a>
+    </div>
+  </div>
+</section>
+
+<!-- The Band -->
+<div class="about-section" id="about">
+  <div class="about-row">
+    <div class="about-bio-panel">
+      <h2 class="section-title">The Band</h2>
+      <p class="about-bio-copy">
+        Evening Radio is a five-piece rock band rooted in blues-influenced rock with an original voice.
+        They've played across Austin's best rooms and multiple SXSW showcases — bringing energy, feel,
+        and tight live performances every time.
+      </p>
+    </div>
+    <div class="about-accordion">
+      <div class="about-panel">
+        <div class="panel-img" data-bg="images/band-jason.jpg"></div>
+        <div class="panel-label-vert">Guitar Vocals</div>
+        <div class="panel-caption">
+          <div class="panel-caption-name">Jason</div>
+          <div class="panel-caption-roles">
+            <span class="panel-role-tag">Vocals</span>
+            <span class="panel-role-tag">Guitar</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="panel-img" data-bg="images/band-josh.jpg"></div>
+        <div class="panel-label-vert">Guitar Vocals</div>
+        <div class="panel-caption">
+          <div class="panel-caption-name">Josh</div>
+          <div class="panel-caption-roles">
+            <span class="panel-role-tag">Vocals</span>
+            <span class="panel-role-tag">Guitar</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="panel-img" data-bg="images/band-will.jpg"></div>
+        <div class="panel-label-vert">Guitar Vocals</div>
+        <div class="panel-caption">
+          <div class="panel-caption-name">Will</div>
+          <div class="panel-caption-roles">
+            <span class="panel-role-tag">Vocals</span>
+            <span class="panel-role-tag">Guitar</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="panel-img" data-bg="images/band-jeremy.jpg"></div>
+        <div class="panel-label-vert">Bass</div>
+        <div class="panel-caption">
+          <div class="panel-caption-name">Jeremy</div>
+          <div class="panel-caption-roles">
+            <span class="panel-role-tag">Bass</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="panel-img" data-bg="images/band-bud.jpg"></div>
+        <div class="panel-label-vert">Drums</div>
+        <div class="panel-caption">
+          <div class="panel-caption-name">Bud</div>
+          <div class="panel-caption-roles">
+            <span class="panel-role-tag">Drums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Music -->
+<section class="section" id="music">
+  <div class="section-header">
+    <h2 class="section-title">Music</h2>
+  </div>
+  <div class="player-wrap">
+    <div class="player-bar">
+      <p class="player-now">Now Playing</p>
+      <p class="player-title" id="pTitle">—</p>
+      <div class="player-controls">
+        <button class="p-btn" id="prevBtn" aria-label="Previous">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"></path></svg>
+        </button>
+        <button class="p-btn p-play" id="playBtn" aria-label="Play/Pause">
+          <svg id="iconPlay" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          <svg id="iconPause" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+        </button>
+        <button class="p-btn" id="nextBtn" aria-label="Next">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
+        </button>
+        <div class="p-progress-wrap">
+          <input type="range" class="p-progress" id="progressBar" value="0" min="0" max="100" step="0.1" aria-label="Progress">
+          <div class="p-times">
+            <span id="pCurrent">0:00</span>
+            <span id="pTotal">0:00</span>
+          </div>
+        </div>
+        <div class="p-vol-wrap">
+          <button class="p-btn" id="muteBtn" aria-label="Mute">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
+          </button>
+          <input type="range" class="p-vol" id="volBar" value="85" min="0" max="100" aria-label="Volume">
+        </div>
+      </div>
+    </div>
+    <div class="tracklist" id="trackList"></div>
+  </div>
+  <audio id="audio" preload="none"></audio>
+</section>
+
+<!-- Photos -->
+<section class="section photos-section" id="photos">
+  <div class="section-header">
+    <h2 class="section-title">Photos</h2>
+  </div>
+  <div class="photo-accordion">
+    <div class="photo-panel">
+      <div class="photo-img" data-bg="images/photo-far-out-lounge.jpg"></div>
+      <div class="photo-caption">Far Out Lounge</div>
+    </div>
+    <div class="photo-panel">
+      <div class="photo-img" data-bg="images/photo-hole-in-the-wall.jpg"></div>
+      <div class="photo-caption">Hole in the Wall</div>
+    </div>
+    <div class="photo-panel">
+      <div class="photo-img" data-bg="images/photo-sxsw.jpg"></div>
+      <div class="photo-caption">SXSW</div>
+    </div>
+    <div class="photo-panel">
+      <div class="photo-img" data-bg="images/photo-austin-ale-house.jpg"></div>
+      <div class="photo-caption">Austin Ale House</div>
+    </div>
+    <div class="photo-panel">
+      <div class="photo-img" data-bg="images/photo-lucky-lounge.jpg"></div>
+      <div class="photo-caption">Lucky Lounge</div>
+    </div>
+  </div>
+</section>
+
+<!-- Videos -->
+<section id="videos" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Videos</h2>
+  </div>
+  <div class="video-theater">
+    <div class="video-theater-main">
+      <div class="video-embed">
+        <iframe id="mainVideoPlayer" data-src="https://www.youtube.com/embed/Wa8cvNmxCAg?rel=0&modestbranding=1&color=white" title="Broke Not Bent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-feature-meta">
+        <p class="video-feature-title" id="theaterTitle">Broke Not Bent</p>
+      </div>
+    </div>
+
+    <div class="video-theater-queue-wrap">
+      <div class="video-theater-queue">
+        <div class="video-queue-item is-active" data-src="https://www.youtube.com/embed/Wa8cvNmxCAg?rel=0&modestbranding=1&color=white" data-title="Broke Not Bent">
+          <img src="https://img.youtube.com/vi/Wa8cvNmxCAg/mqdefault.jpg" alt="Broke Not Bent">
+          <p class="video-queue-title">Broke Not Bent</p>
+        </div>
+        <div class="video-queue-item" data-src="https://www.youtube.com/embed/bRb77eUYOeg?rel=0&modestbranding=1&color=white" data-title="Straight to Hell">
+          <img src="https://img.youtube.com/vi/bRb77eUYOeg/mqdefault.jpg" alt="Straight to Hell">
+          <p class="video-queue-title">Straight to Hell</p>
+        </div>
+        <div class="video-queue-item" data-src="https://www.youtube.com/embed/Py3ssfskt_o?rel=0&modestbranding=1&color=white" data-title="Turbulence">
+          <img src="https://img.youtube.com/vi/Py3ssfskt_o/mqdefault.jpg" alt="Turbulence">
+          <p class="video-queue-title">Turbulence</p>
+        </div>
+        <div class="video-queue-item" data-src="https://www.youtube.com/embed/no0nJOJooL8?rel=0&modestbranding=1&color=white" data-title="Looking Down">
+          <img src="https://img.youtube.com/vi/no0nJOJooL8/mqdefault.jpg" alt="Looking Down">
+          <p class="video-queue-title">Looking Down</p>
+        </div>
+        <div class="video-queue-item" data-src="https://www.youtube.com/embed/wksgEv_qqTs?rel=0&modestbranding=1&color=white" data-title="Midnight Rider">
+          <img src="https://img.youtube.com/vi/wksgEv_qqTs/mqdefault.jpg" alt="Midnight Rider">
+          <p class="video-queue-title">Midnight Rider</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Merch -->
+<section id="merch">
+  <div class="merch-inner">
+    <div class="section-header">
+      <h2 class="section-title">Merch</h2>
+    </div>
+    <hr class="rule">
+
+    <div class="merch-grid">
+      <a href="https://eveningradio.printful.me/product/trucker-cap" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-trucker-cap.jpg" alt="Evening Radio trucker cap" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">Trucker cap</p>
+          <p class="merch-card-variants">Black/White · Black · Navy</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$20</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://eveningradio.printful.me/product/classic-rope-cap" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-rope-cap.jpg" alt="Evening Radio rope cap" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">Rope cap</p>
+          <p class="merch-card-variants">Black/White · Kelly/White · Blue/White</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$22</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://eveningradio.printful.me/product/unisex-short-sleeve-v-neck-t-shirt" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-vneck.jpg" alt="Evening Radio v-neck t-shirt" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">V-neck t-shirt</p>
+          <p class="merch-card-variants">Black · Navy · Dark grey heather</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$22.50</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://eveningradio.printful.me/product/34-sleeve-raglan-shirt" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-raglan.jpg" alt="Evening Radio 3/4 sleeve raglan shirt" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">3/4 sleeve raglan</p>
+          <p class="merch-card-variants">White/Black · White/Navy · White/Royal · White/Red · White/Heather Charcoal · White/Kelly</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$26</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://eveningradio.printful.me/product/short-sleeve-t-shirt" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-shortsleeve.jpg" alt="Evening Radio short sleeve t-shirt" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">Short sleeve t-shirt</p>
+          <p class="merch-card-variants">Black · Charcoal-Black · Emerald · True Royal · Teal</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$26.50</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://eveningradio.printful.me/product/hooded-long-sleeve-tee" target="_blank" rel="noopener" class="merch-card">
+        <div class="merch-card-img">
+          <img src="images/merch-hooded.jpg" alt="Evening Radio hooded long-sleeve tee" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-card-body">
+          <p class="merch-card-title">Hooded long-sleeve tee</p>
+          <p class="merch-card-variants">Charcoal Black · Heather Navy · Grey · Heather Royal</p>
+          <div class="merch-card-footer">
+            <span class="merch-card-price">$22.50</span>
+            <span class="merch-card-buy">Buy</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="section-header" style="margin-bottom:0">
+    <p class="section-eyebrow" style="justify-content:center">Booking</p>
+    <h2 class="section-title">Let's Play Your Room</h2>
+  </div>
+  <p class="contact-desc">Evening Radio is available for bookings in Austin and surrounding areas. We'd love to be on your stage.</p>
+  <a href="mailto:booking@eveningradio.com" class="contact-email-link">booking@eveningradio.com</a><br>
+  <a href="mailto:booking@eveningradio.com" class="btn-primary red">Send a Booking Request</a>
+</section>
+
+<footer>
+  <span class="footer-logo">Evening Radio</span>
+  <span class="footer-copy">© <span id="yr"></span> Evening Radio — Austin, TX</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
