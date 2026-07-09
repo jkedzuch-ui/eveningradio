@@ -1571,8 +1571,8 @@ footer {
 }
 
 @keyframes heropan {
-  from { transform: translate(-30%, -50%); }
-  to   { transform: translate(-70%, -50%); }
+  from { transform: translate(-50%, -50%); }
+  to   { transform: translate(-62%, -50%); }
 }
 
 /* ============================================================
