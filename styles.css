@@ -83,30 +83,22 @@ section[id], div[id] { scroll-margin-top: var(--nav-height); }
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 var(--content-inline);
-}
-
-.site-nav-logo {
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--offwhite);
-  text-decoration: none;
+  position: relative;
 }
 
 .site-nav-links {
   display: flex;
   align-items: center;
-  gap: 1.7rem;
+  gap: 2.2rem;
   list-style: none;
 }
 
 .site-nav-links a {
-  font-size: 0.68rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--offwhite);
   text-decoration: none;
@@ -431,13 +423,15 @@ hr.rule {
   z-index: 2;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: var(--dark);
+  background: var(--black);
 }
 
 .about-row {
   display: flex;
   align-items: stretch;
   min-height: 620px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .about-bio-panel {
@@ -449,7 +443,7 @@ hr.rule {
   justify-content: center;
   padding: 1.8rem 2rem;
   border-right: 1px solid var(--border);
-  background: var(--dark);
+  background: var(--black);
 }
 
 .about-bio-panel .section-title {
@@ -812,7 +806,7 @@ hr.rule {
    ============================================================ */
 
 #videos {
-  background: var(--surface);
+  background: var(--black);
   border-top: 1px solid var(--border);
 }
 
@@ -869,7 +863,7 @@ hr.rule {
   bottom: 0.25rem;
   width: 60px;
   pointer-events: none;
-  background: linear-gradient(to right, transparent, var(--surface));
+  background: linear-gradient(to right, transparent, var(--black));
 }
 
 .video-theater-queue {
@@ -935,6 +929,8 @@ hr.rule {
   display: flex;
   overflow: hidden;
   height: 500px;
+  max-width: 1440px;
+  margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: var(--r);
 }
@@ -1008,7 +1004,7 @@ hr.rule {
    Merch
    ============================================================ */
 
-#merch { background: #0b0b0c; padding: 64px 20px; }
+#merch { background: var(--black); padding: 64px 20px; }
 
 .merch-inner { max-width: 1080px; margin: 0 auto; }
 
@@ -1103,7 +1099,7 @@ hr.rule {
 #contact {
   position: relative;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--black);
   border-top: 1px solid var(--border);
   text-align: center;
 }
@@ -1245,6 +1241,8 @@ footer {
 
   .section-header { margin-bottom: var(--section-header-gap); }
   .section-title, .about-bio-panel .section-title { font-size: clamp(1.2rem, 6vw, 1.7rem); }
+  .section-eyebrow { font-size: 0.52rem; letter-spacing: 0.34em; gap: 0.55rem; }
+  .section-eyebrow::before { width: 14px; }
 
   .about-bio-panel { padding: 1rem 1rem 0.95rem; }
   .about-bio-copy, .contact-desc { margin-bottom: 0.7rem; font-size: 1rem; line-height: 1.75; }

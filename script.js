@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function initVideo() {
       const video = document.querySelector('.hero-video-wrap video');
       if (!video) return;
+      video.muted = true;
+      video.defaultMuted = true;
       const tryPlay = () => video.play().catch(() => {});
       tryPlay();
       document.addEventListener('visibilitychange', () => {
@@ -95,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       video.addEventListener('suspend', tryPlay);
       video.addEventListener('stalled', tryPlay);
+      video.addEventListener('error', () => {
+        console.error('Hero video failed to load — check that video/hero-background.mp4 exists at that path and is under your host\'s file size limit.', video.error);
+      });
     }
     setTimeout(initVideo, 300);
   })();
