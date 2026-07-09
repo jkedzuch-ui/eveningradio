@@ -104,16 +104,19 @@ document.addEventListener('DOMContentLoaded', function () {
     video.defaultMuted = true;
     video.playsInline = true;
 
-    video.load();
+   video.addEventListener('canplay', function () {
+  video.classList.add('is-playing');
 
-    const playPromise = video.play();
+  const playPromise = video.play();
 
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(function () {
-        // If autoplay is blocked, keep the poster image visible.
-      });
-    }
+  if (playPromise && typeof playPromise.catch === 'function') {
+    playPromise.catch(function () {
+      // If autoplay is blocked, keep the poster image visible.
+    });
   }
+}, { once: true });
+
+video.load();
 
   window.addEventListener('load', function () {
     setTimeout(loadHeroVideo, 800);

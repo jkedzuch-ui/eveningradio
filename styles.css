@@ -306,6 +306,20 @@ hr.rule {
   pointer-events: none;
 }
 
+.hero-video-wrap {
+  background-image: url("images/hero-frame.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-video-wrap video {
+  opacity: 0;
+}
+
+.hero-video-wrap video.is-playing {
+  opacity: 1;
+}
+
 .hero-video-wrap video {
   position: absolute;
   top: 65%;
