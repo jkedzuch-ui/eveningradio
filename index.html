@@ -4,15 +4,41 @@
 <meta charset="UTF-8">
 <title>Evening Radio - Austin Blues Rock Band</title>
 <meta name="description" content="Evening Radio is a five-piece blues-influenced rock band based in Austin, TX. Live music, recordings, and booking info.">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://eveningradio.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Evening Radio | Austin Blues Rock Band">
+<meta property="og:description" content="Evening Radio is a five-piece Austin blues rock band. Listen to music, watch live videos, view photos, shop merch, and book the band.">
+<meta property="og:url" content="https://eveningradio.com/">
+<meta property="og:image" content="https://eveningradio.com/images/hero-frame.jpg">
+
 <link rel="icon" href="./images/favicon.png?v=2" type="image/png">
 <link rel="shortcut icon" href="./images/favicon.png?v=2" type="image/png">
 <link rel="apple-touch-icon" href="./images/favicon.png?v=2">
+
 <link rel="preload" as="image" href="images/hero-frame.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/white-logo.png" fetchpriority="high">
 <link rel="preload" href="./fonts/quicksand-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css?v=local-fonts">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Evening Radio",
+  "url": "https://eveningradio.com/",
+  "image": "https://eveningradio.com/images/hero-frame.jpg",
+  "genre": ["Rock", "Blues Rock"],
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Austin, TX"
+  },
+  "description": "Evening Radio is a five-piece blues-influenced rock band based in Austin, Texas.",
+  "email": "booking@eveningradio.com"
+}
+</script>
 </head>
 <body>
 
@@ -42,14 +68,15 @@
   <div class="hero-fade-top"></div>
   <div class="hero-fade-bottom"></div>
   <div class="hero-fade-left"></div>
-  <div class="hero-content">
-    <img class="hero-logo" src="images/white-logo.png" alt="Evening Radio">
-    <p class="hero-tagline">A five-piece rock band with tight grooves and a little blues.</p>
-    <div class="hero-actions">
-      <a href="#music" class="btn-primary">Listen</a>
-      <a href="#videos" class="btn-ghost">Watch</a>
-    </div>
+<div class="hero-content">
+  <h1 class="sr-only">Evening Radio - Austin Blues Rock Band</h1>
+  <img class="hero-logo" src="images/white-logo.png" alt="Evening Radio">
+  <p class="hero-tagline">A five-piece rock band with tight grooves and a little blues.</p>
+  <div class="hero-actions">
+    <a href="#music" class="btn-primary">Listen</a>
+    <a href="#videos" class="btn-ghost">Watch</a>
   </div>
+</div>
 </section>
 
 <!-- The Band -->
