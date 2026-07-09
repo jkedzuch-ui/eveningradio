@@ -83,26 +83,54 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(iframe);
   })();
 
-  // ── HERO VIDEO AUTOPLAY ──
-  (function () {
-    function initVideo() {
-      const video = document.querySelector('.hero-video-wrap video');
-      if (!video) return;
-      video.muted = true;
-      video.defaultMuted = true;
-      const tryPlay = () => video.play().catch(() => {});
-      tryPlay();
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden && video.paused) tryPlay();
-      });
-      video.addEventListener('suspend', tryPlay);
-      video.addEventListener('stalled', tryPlay);
-      video.addEventListener('error', () => {
-        console.error('Hero video failed to load — check that video/hero-background.mp4 exists at that path and is under your host\'s file size limit.', video.error);
+// ── HERO VIDEO: DELAY LOAD FOR BETTER MOBILE PERFORMANCE ──
+(function () {
+  function loadHeroVideo() {
+    const video = document.getElementById('heroVideo');
+    if (!video || video.dataset.loaded === 'true') return;
+
+    const source = document.createElement('source');
+
+    source.src = window.matchMedia('(max-width: 768px)').matches
+      ? 'video/hero-background-mobile.mp4'
+      : 'video/hero-background-compressed.mp4';
+
+    source.type = 'video/mp4';
+
+    video.appendChild(source);
+    video.dataset.loaded = 'true';
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    video.load();
+
+    const playPromise = video.play();
+
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {
+        // If autoplay is blocked, keep the poster image visible.
       });
     }
-    setTimeout(initVideo, 300);
-  })();
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(loadHeroVideo, 800);
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    const video = document.getElementById('heroVideo');
+
+    if (!document.hidden && video && video.dataset.loaded === 'true' && video.paused) {
+      const playPromise = video.play();
+
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {});
+      }
+    }
+  });
+})();
 
   // ── MUSIC PLAYER ──
   (function () {

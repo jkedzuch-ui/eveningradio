@@ -37,10 +37,7 @@
 <!-- Hero -->
 <section class="hero" id="top">
   <div class="hero-video-wrap">
-   <video autoplay muted loop playsinline preload="metadata" poster="images/hero-frame.jpg" class="is-playing">
-  <source src="video/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
-  <source src="video/hero-background-compressed.mp4" type="video/mp4">
-</video>
+   <video id="heroVideo" muted loop playsinline preload="none" poster="images/hero-frame.jpg" class="is-playing"></video>
   </div>
   <div class="hero-fade-top"></div>
   <div class="hero-fade-bottom"></div>
@@ -347,6 +344,6 @@
   <span class="footer-copy">© <span id="yr"></span> Evening Radio — Austin, TX</span>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=delayed-video"></script>
 </body>
 </html>
