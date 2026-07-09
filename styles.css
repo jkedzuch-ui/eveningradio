@@ -1946,3 +1946,93 @@ div {
     line-height: 1.6;
   }
 }
+
+
+/* ============================================================
+   Final Band section background reset
+   - Keep The Band section visually consistent with the rest
+   - Do not add a separate red/blue overlay inside this section
+   ============================================================ */
+
+.about-section {
+  background: var(--black) !important;
+}
+
+.about-section::before,
+.about-section::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
+.about-row,
+.about-bio-panel {
+  background: var(--black) !important;
+}
+
+/* ============================================================
+   Final mobile spacing cleanup
+   - Keep section side margins even on mobile
+   - Narrow the hero paragraph on mobile so it wraps cleaner
+   ============================================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --content-inline: 18px;
+  }
+
+  .section,
+  .about-section,
+  #music,
+  #photos,
+  #videos,
+  #merch,
+  #contact {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .about-row,
+  #music > .section-header,
+  #photos > .section-header,
+  #videos > .section-header,
+  #merch .section-header,
+  #contact > .section-header,
+  #music .player-wrap,
+  #photos .photo-accordion,
+  #videos .video-theater,
+  #merch .merch-inner {
+    width: 100%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tagline {
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --content-inline: 16px;
+  }
+
+  .section,
+  .about-section,
+  #music,
+  #photos,
+  #videos,
+  #merch,
+  #contact {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-tagline {
+    max-width: 17.5rem;
+  }
+}
