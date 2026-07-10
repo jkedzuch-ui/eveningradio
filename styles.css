@@ -4,25 +4,46 @@
    Responsive section spacing refinement
    ========================================= */
 
-/* Match the desktop hero-to-band spacing to the 4rem section rhythm */
 @media (min-width: 769px) {
   .hero {
     margin-bottom: 4rem;
   }
 }
 
-/* Add breathing room between mobile sections */
 @media (max-width: 768px) {
   :root {
-    --section-y-mobile: 3.25rem;
-    --section-header-gap-mobile: 1.35rem;
+    --section-y-mobile: 3.5rem;
+    --section-header-gap-mobile: 1.5rem;
   }
 
-  /* Keep the hero-to-band transition intentionally tight */
   .hero {
     margin-bottom: 0 !important;
   }
 
+  .about-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  #music,
+  #photos,
+  #videos,
+  #merch,
+  #contact {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  #music > .section-header,
+  #photos > .section-header,
+  #videos > .section-header,
+  #merch .section-header,
+  #contact > .section-header {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media (max-width: 420px) {
   .about-section {
     padding-top: 2.75rem !important;
     padding-bottom: 3.25rem !important;
@@ -36,29 +57,4 @@
     padding-top: 3.25rem !important;
     padding-bottom: 3.25rem !important;
   }
-
-  #music > .section-header,
-  #photos > .section-header,
-  #videos > .section-header,
-  #merch .section-header,
-  #contact > .section-header {
-    margin-bottom: 1.35rem !important;
-  }
 }
-
-@media (max-width: 420px) {
-  .about-section {
-    padding-top: 2.5rem !important;
-    padding-bottom: 3rem !important;
-  }
-
-  #music,
-  #photos,
-  #videos,
-  #merch,
-  #contact {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-  }
-}
-
