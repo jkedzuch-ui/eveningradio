@@ -2335,3 +2335,36 @@ body::before {
     padding-bottom: 0.42rem !important;
   }
 }
+
+
+/* ============================================================
+   Cellular performance: skip offscreen layout/paint work
+   ============================================================ */
+
+#music,
+#photos,
+#videos,
+#merch,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+/* Avoid keeping a compositor layer allocated before video playback. */
+.hero-video-wrap video {
+  will-change: auto;
+}
+
+.hero-video-wrap video.is-playing {
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  #music,
+  #photos,
+  #videos,
+  #merch,
+  #contact {
+    contain-intrinsic-size: 650px;
+  }
+}

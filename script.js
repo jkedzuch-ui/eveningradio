@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
           observer.unobserve(el);
         }
       });
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '50px 0px' });
 
     lazyBgs.forEach(function (el) {
       observer.observe(el);
@@ -92,49 +92,95 @@ document.addEventListener('DOMContentLoaded', function () {
         iframe.src = realSrc;
         observer.disconnect();
       }
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '50px 0px' });
 
     observer.observe(iframe);
   })();
 
- // ── HERO VIDEO: DOWNLOAD EARLY, PLAY AFTER PAGE IS READY ──
-(function () {
-  function startHeroVideo() {
+  // ── HERO VIDEO: KEEP IT OFF THE INITIAL CELLULAR LOAD ──
+  (function () {
     const video = document.getElementById('heroVideo');
-    if (!video || video.dataset.started === 'true') return;
+    if (!video) return;
 
-    video.dataset.started = 'true';
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
+    const connection =
+      navigator.connection ||
+      navigator.mozConnection ||
+      navigator.webkitConnection;
 
-    const playPromise = video.play();
+    const saveData = Boolean(connection && connection.saveData);
+    const effectiveType = connection && connection.effectiveType
+      ? connection.effectiveType
+      : '';
 
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(function () {
-        // If autoplay is blocked, keep the poster image visible.
+    let started = false;
+
+    function attachVideoSources() {
+      if (started) return;
+      started = true;
+
+      video.querySelectorAll('source[data-src]').forEach(function (source) {
+        source.src = source.dataset.src;
+      });
+
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.load();
+
+      video.addEventListener('canplay', function onCanPlay() {
+        video.removeEventListener('canplay', onCanPlay);
+
+        const playPromise = video.play();
+
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise
+            .then(function () {
+              video.classList.add('is-playing');
+            })
+            .catch(function () {
+              // Keep the poster visible if autoplay is blocked.
+            });
+        }
       });
     }
 
-    video.classList.add('is-playing');
-  }
+    function scheduleVideo() {
+      // Respect data-saving and very slow connections.
+      // In those cases, wait for the visitor to interact.
+      if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
+        ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+          window.addEventListener(eventName, attachVideoSources, {
+            once: true,
+            passive: true
+          });
+        });
+        return;
+      }
 
-  window.addEventListener('load', function () {
-    setTimeout(startHeroVideo, 800);
-  });
+      // On normal cellular/Wi-Fi, wait until the page is loaded and the
+      // browser has idle time, so the poster, logo, nav, and buttons win.
+      const delay = effectiveType === '3g' ? 2500 : 1200;
 
-  document.addEventListener('visibilitychange', function () {
-    const video = document.getElementById('heroVideo');
-
-    if (!document.hidden && video && video.dataset.started === 'true' && video.paused) {
-      const playPromise = video.play();
-
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(function () {});
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(attachVideoSources, {
+          timeout: delay + 1500
+        });
+      } else {
+        window.setTimeout(attachVideoSources, delay);
       }
     }
-  });
-})();
+
+    window.addEventListener('load', scheduleVideo, { once: true });
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && started && video.paused) {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function () {});
+        }
+      }
+    });
+  })();
 
   // ── MUSIC PLAYER ──
   (function () {

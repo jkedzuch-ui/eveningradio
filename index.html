@@ -19,7 +19,6 @@
 
 <link rel="preload" as="image" href="images/hero-frame.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/white-logo.webp" fetchpriority="high">
-<link rel="preload" href="./fonts/quicksand-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css?v=local-fonts">
 
 <script type="application/ld+json">
@@ -62,9 +61,9 @@
 <!-- Hero -->
 <section class="hero" id="top">
   <div class="hero-video-wrap">
-<video id="heroVideo" muted loop playsinline preload="auto" poster="images/hero-frame.jpg">
-  <source src="video/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
-  <source src="video/hero-background.mp4" type="video/mp4">
+<video id="heroVideo" muted loop playsinline preload="none" poster="images/hero-frame.jpg">
+  <source data-src="video/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+  <source data-src="video/hero-background.mp4" type="video/mp4">
 </video>
     </div>
   <div class="hero-fade-top"></div>
@@ -72,7 +71,7 @@
   <div class="hero-fade-left"></div>
 <div class="hero-content">
   <h1 class="sr-only">Evening Radio - Austin Blues Rock Band</h1>
-  <img class="hero-logo" src="images/white-logo.webp" alt="Evening Radio">
+  <img class="hero-logo" src="images/white-logo.webp" alt="Evening Radio" width="600" height="240" fetchpriority="high" decoding="async">
   <p class="hero-tagline">A five-piece rock band with tight grooves and a little blues.</p>
   <div class="hero-actions">
     <a href="#music" class="btn-primary">Listen</a>
@@ -237,23 +236,23 @@
     <div class="video-theater-queue-wrap">
       <div class="video-theater-queue">
         <div class="video-queue-item is-active" data-src="https://www.youtube.com/embed/Wa8cvNmxCAg?rel=0&modestbranding=1&color=white" data-title="Broke Not Bent">
-          <img src="https://img.youtube.com/vi/Wa8cvNmxCAg/mqdefault.jpg" alt="Broke Not Bent">
+          <img src="https://img.youtube.com/vi/Wa8cvNmxCAg/mqdefault.jpg" alt="Broke Not Bent" width="320" height="180" loading="lazy" decoding="async" fetchpriority="low">
           <p class="video-queue-title">Broke Not Bent</p>
         </div>
         <div class="video-queue-item" data-src="https://www.youtube.com/embed/bRb77eUYOeg?rel=0&modestbranding=1&color=white" data-title="Straight to Hell">
-          <img src="https://img.youtube.com/vi/bRb77eUYOeg/mqdefault.jpg" alt="Straight to Hell">
+          <img src="https://img.youtube.com/vi/bRb77eUYOeg/mqdefault.jpg" alt="Straight to Hell" width="320" height="180" loading="lazy" decoding="async" fetchpriority="low">
           <p class="video-queue-title">Straight to Hell</p>
         </div>
         <div class="video-queue-item" data-src="https://www.youtube.com/embed/Py3ssfskt_o?rel=0&modestbranding=1&color=white" data-title="Turbulence">
-          <img src="https://img.youtube.com/vi/Py3ssfskt_o/mqdefault.jpg" alt="Turbulence">
+          <img src="https://img.youtube.com/vi/Py3ssfskt_o/mqdefault.jpg" alt="Turbulence" width="320" height="180" loading="lazy" decoding="async" fetchpriority="low">
           <p class="video-queue-title">Turbulence</p>
         </div>
         <div class="video-queue-item" data-src="https://www.youtube.com/embed/no0nJOJooL8?rel=0&modestbranding=1&color=white" data-title="Looking Down">
-          <img src="https://img.youtube.com/vi/no0nJOJooL8/mqdefault.jpg" alt="Looking Down">
+          <img src="https://img.youtube.com/vi/no0nJOJooL8/mqdefault.jpg" alt="Looking Down" width="320" height="180" loading="lazy" decoding="async" fetchpriority="low">
           <p class="video-queue-title">Looking Down</p>
         </div>
         <div class="video-queue-item" data-src="https://www.youtube.com/embed/wksgEv_qqTs?rel=0&modestbranding=1&color=white" data-title="Midnight Rider">
-          <img src="https://img.youtube.com/vi/wksgEv_qqTs/mqdefault.jpg" alt="Midnight Rider">
+          <img src="https://img.youtube.com/vi/wksgEv_qqTs/mqdefault.jpg" alt="Midnight Rider" width="320" height="180" loading="lazy" decoding="async" fetchpriority="low">
           <p class="video-queue-title">Midnight Rider</p>
         </div>
       </div>
@@ -373,6 +372,6 @@
   <span class="footer-copy">© <span id="yr"></span> Evening Radio — Austin, TX</span>
 </footer>
 
-<script src="script.js?v=delayed-video"></script>
+<script src="script.js?v=cellular-performance-1" defer></script>
 </body>
 </html>
