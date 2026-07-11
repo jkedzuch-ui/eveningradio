@@ -79,7 +79,7 @@
   }
 
   .about-panel:hover .panel-img {
-    filter: none !important;
+    filter: brightness(0.42) saturate(0.35) !important;
     transform: none !important;
   }
   .about-panel.is-active .panel-img {
