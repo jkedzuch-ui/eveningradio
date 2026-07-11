@@ -63,7 +63,9 @@
   /* Prevent touch-triggered :hover from keeping accordion panels visually
      expanded after tap-to-retract. On touch devices, hover state can stick
      after a tap, fighting the .is-active class the JS toggles correctly.
-     This scopes expand behavior to .is-active only below desktop widths. */
+     This scopes ALL expand-related styling (width, image filter/scale,
+     caption visibility, label visibility) to .is-active only below
+     desktop widths. */
   .about-accordion:hover .about-panel,
   .about-accordion.has-active .about-panel:not(.is-active),
   .about-accordion:hover .about-panel:hover {
@@ -76,6 +78,31 @@
     flex: 3.2 !important;
   }
 
+  .about-panel:hover .panel-img {
+    filter: none !important;
+    transform: none !important;
+  }
+  .about-panel.is-active .panel-img {
+    filter: brightness(0.9) saturate(0.5) !important;
+    transform: scale(1.04) !important;
+  }
+
+  .about-panel:hover .panel-caption {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+  }
+  .about-panel.is-active .panel-caption {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .about-panel:hover .panel-label-vert {
+    opacity: 1 !important;
+  }
+  .about-panel.is-active .panel-label-vert {
+    opacity: 0 !important;
+  }
+
   .photo-accordion:hover .photo-panel,
   .photo-accordion.has-active .photo-panel:not(.is-active),
   .photo-accordion:hover .photo-panel:hover {
@@ -86,5 +113,21 @@
   }
   .photo-panel.is-active {
     flex: 5 !important;
+  }
+
+  .photo-panel:hover .photo-img {
+    filter: brightness(0.55) saturate(0.3) contrast(1.05) !important;
+  }
+  .photo-panel.is-active .photo-img {
+    filter: brightness(0.9) saturate(0.6) contrast(1.05) !important;
+  }
+
+  .photo-panel:hover .photo-caption {
+    opacity: 0 !important;
+    transform: translateY(6px) !important;
+  }
+  .photo-panel.is-active .photo-caption {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
 }
