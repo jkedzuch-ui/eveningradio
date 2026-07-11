@@ -114,17 +114,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let started = false;
 
+    // Pick the right file ourselves instead of relying on <source media="">,
+    // which can be unreliable on iOS Safari when combined with preload="none"
+    // and JS-populated data-src attributes.
+    function pickVideoSrc() {
+      const mobileSource = video.querySelector('source[data-src*="mobile"]');
+      const desktopSource = video.querySelector('source[data-src]:not([data-src*="mobile"])');
+
+      const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+
+      if (isMobileViewport && mobileSource) {
+        return mobileSource.dataset.src;
+      }
+      return desktopSource ? desktopSource.dataset.src : (mobileSource ? mobileSource.dataset.src : '');
+    }
+
     function attachVideoSources() {
       if (started) return;
       started = true;
 
-      video.querySelectorAll('source[data-src]').forEach(function (source) {
-        source.src = source.dataset.src;
-      });
+      const chosenSrc = pickVideoSrc();
+      if (!chosenSrc) return;
 
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
+      video.src = chosenSrc;
       video.load();
 
       video.addEventListener('canplay', function onCanPlay() {
