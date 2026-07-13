@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
         row.innerHTML = `
           <div class="track-num">
             <span class="t-idx">${String(i + 1).padStart(2, '0')}</span>
-            <span class="t-play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+            <span class="t-play">&#9654;</span>
           </div>
           <div class="track-name-col">
             <div class="track-name">${t.title}</div>

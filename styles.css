@@ -75,7 +75,7 @@
     flex: 0.38 !important;
   }
   .about-panel.is-active {
-    flex: 4.2 !important;
+    flex: 6 !important;
   }
 
   .about-panel:hover .panel-img {
@@ -130,4 +130,14 @@
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
+}
+
+/* Fix active-track play triangle rendering on mobile/iOS */
+.track-num .t-play {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--blue-bright);
+  text-align: center;
 }
