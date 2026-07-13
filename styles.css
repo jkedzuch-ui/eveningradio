@@ -131,3 +131,13 @@
     transform: translateY(0) !important;
   }
 }
+
+/* Fix active-track play triangle rendering on mobile/iOS */
+.track-num .t-play {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--blue-bright);
+  text-align: center;
+}
