@@ -150,3 +150,33 @@
   height: 0.72rem;
   fill: currentColor;
 }
+
+/* iOS-safe active-track play icon. Draw the triangle in CSS so an older
+   cached Unicode glyph cannot render as an emoji-style button. */
+.track-num .t-play {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0 !important;
+  line-height: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-bright);
+  text-align: center;
+}
+.track-row.is-active .track-num .t-play {
+  display: flex;
+}
+.track-num .t-play svg {
+  display: none !important;
+}
+.track-num .t-play::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 0.28rem solid transparent;
+  border-bottom: 0.28rem solid transparent;
+  border-left: 0.46rem solid currentColor;
+  transform: translateX(0.04rem);
+}
