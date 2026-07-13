@@ -75,7 +75,7 @@
     flex: 0.38 !important;
   }
   .about-panel.is-active {
-    flex: 3.2 !important;
+    flex: 4.2 !important;
   }
 
   .about-panel:hover .panel-img {
@@ -130,36 +130,4 @@
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
-}
-
-/* Fix active-track play triangle rendering on mobile/iOS */
-.track-num .t-play {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.72rem !important;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--blue-bright);
-  text-align: center;
-}
-
-
-/* Robust active-track play icon: use SVG instead of a font glyph */
-.track-num .t-play {
-  display: none;
-  width: 1rem;
-  height: 1rem;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue-bright);
-}
-
-.track-row.is-active .track-num .t-play {
-  display: flex;
-}
-
-.track-num .t-play svg {
-  display: block;
-  width: 0.72rem;
-  height: 0.72rem;
-  fill: currentColor;
 }
