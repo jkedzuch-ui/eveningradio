@@ -233,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="track-num">
             <span class="t-idx">${String(i + 1).padStart(2, '0')}</span>
             <span class="t-play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+            <span class="t-eq" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
           <div class="track-name-col">
             <div class="track-name">${t.title}</div>
@@ -252,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function selectTrack(idx, autoplay) {
       document.querySelectorAll('.track-row').forEach(function (r, i) {
         r.classList.toggle('is-active', i === idx);
+        r.classList.remove('is-playing');
       });
 
       currentIdx = idx;
@@ -269,6 +271,9 @@ document.addEventListener('DOMContentLoaded', function () {
       playing = val;
       iconPlay.style.display = val ? 'none' : '';
       iconPause.style.display = val ? '' : 'none';
+
+      const activeRow = document.querySelector('.track-row.is-active');
+      if (activeRow) activeRow.classList.toggle('is-playing', val);
     }
 
     playBtn.addEventListener('click', function () {
@@ -373,6 +378,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         title.textContent = item.dataset.title;
       });
+    });
+  })();
+
+  // ── SCROLL REVEAL ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const targets = document.querySelectorAll(
+      '.section-header, .about-bio-panel, .about-panel, .photo-panel, ' +
+      '.video-queue-item, .merch-card, .player-bar, .contact-desc, ' +
+      '.contact-email-link, #contact .btn-primary'
+    );
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+
+    targets.forEach(function (el) {
+      observer.observe(el);
     });
   })();
 
