@@ -180,8 +180,3 @@
   border-left: 0.46rem solid currentColor;
   transform: translateX(0.04rem);
 }
-
-/* Mobile nav links: use the same red as the desktop hover color */
-@media (max-width:768px){
-  .site-nav-links a{color:var(--red-bright) !important}
-}
