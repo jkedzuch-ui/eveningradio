@@ -249,7 +249,8 @@ html::before{
   inset:0;
   z-index:9998;
   pointer-events:none;
-  background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+  mix-blend-mode:screen;
+  background:radial-gradient(ellipse at center, rgba(255,235,200,0.08) 0%, rgba(255,235,200,0.03) 35%, transparent 70%);
 }
 @media (prefers-reduced-motion:no-preference){
   html::before{
@@ -258,10 +259,10 @@ html::before{
   @keyframes bulbFlicker{
     0%,100%{opacity:1}
     41%{opacity:1}
-    43%{opacity:0.85}
+    43%{opacity:0.55}
     45%{opacity:1}
     72%{opacity:1}
-    74%{opacity:0.92}
+    74%{opacity:0.75}
     76%{opacity:1}
   }
 }
