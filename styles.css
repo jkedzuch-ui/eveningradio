@@ -289,15 +289,15 @@
 .hero-dust span{
   position:absolute;
   width:5px;
-  height:5px;
-  border-radius:50%;
+  height:2px;
+  border-radius:2px;
   background:rgba(232,232,232,0.65);
   opacity:0;
 }
-.hero-dust span:nth-child(1){top:28%;left:22%}
-.hero-dust span:nth-child(2){top:62%;left:70%;background:rgba(232,232,232,0.6)}
-.hero-dust span:nth-child(3){top:75%;left:38%;width:3px;background:rgba(232,232,232,0.55)}
-.hero-dust span:nth-child(4){top:18%;left:58%;background:rgba(232,232,232,0.5)}
+.hero-dust span:nth-child(1){top:28%;left:22%;width:6px;height:2px;transform:rotate(24deg)}
+.hero-dust span:nth-child(2){top:62%;left:70%;width:4px;height:2px;background:rgba(232,232,232,0.6);transform:rotate(-52deg)}
+.hero-dust span:nth-child(3){top:75%;left:38%;width:7px;height:2px;background:rgba(232,232,232,0.55);transform:rotate(8deg)}
+.hero-dust span:nth-child(4){top:18%;left:58%;width:5px;height:2px;background:rgba(232,232,232,0.5);transform:rotate(-15deg)}
 @media (prefers-reduced-motion:no-preference){
   .hero-dust span:nth-child(1){animation:dustSpeck1 4.5s ease-in-out infinite}
   .hero-dust span:nth-child(2){animation:dustSpeck2 5.5s ease-in-out infinite}
