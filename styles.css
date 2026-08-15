@@ -288,8 +288,8 @@
 }
 .hero-dust span{
   position:absolute;
-  width:2px;
-  height:2px;
+  width:5px;
+  height:5px;
   border-radius:50%;
   background:rgba(232,232,232,0.65);
   opacity:0;
