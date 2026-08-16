@@ -271,9 +271,7 @@ hr.rule {
 .hero {
   position: relative;
   width: 100vw;
-  margin-left: calc(-50vw
-      /**/
-      +50%);
+  margin-left: calc(-50vw + 50%);
   margin-bottom: 5rem;
   height: calc(82vh - 60px);
   min-height: 600px;
@@ -319,7 +317,7 @@ hr.rule {
   top: -120px;
   left: 0;
   right: 0;
-  height: calc(35%+120px);
+  height: calc(35% + 120px);
   z-index: 2;
   background: linear-gradient(to bottom, #070707 0%, transparent 100%)
 }

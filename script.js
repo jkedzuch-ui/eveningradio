@@ -172,20 +172,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // On normal cellular/Wi-Fi, wait until the page is loaded and the
-      // browser has idle time, so the poster, logo, nav, and buttons win.
-      const delay = effectiveType === '3g' ? 2500 : 1200;
-
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(attachVideoSources, {
-          timeout: delay + 1500
-        });
-      } else {
-        window.setTimeout(attachVideoSources, delay);
-      }
+      // Let the logo and critical hero styles start first, then request the
+      // compact fast-start video without waiting for every page asset.
+      const delay = effectiveType === '3g' ? 750 : 200;
+      window.setTimeout(attachVideoSources, delay);
     }
 
-    window.addEventListener('load', scheduleVideo, { once: true });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', scheduleVideo, { once: true });
+    } else {
+      scheduleVideo();
+    }
 
     document.addEventListener('visibilitychange', function () {
       if (!document.hidden && started && video.paused) {

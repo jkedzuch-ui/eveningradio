@@ -17,9 +17,37 @@
 <link rel="icon" href="./images/favicon.png?v=2" type="image/png">
 <link rel="apple-touch-icon" href="./images/favicon.png?v=2">
 
-<link rel="preload" as="image" href="images/hero-frame.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/white-logo.webp" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=reveal-1">
+<style>
+@font-face{font-family:"Quicksand";src:url("./fonts/quicksand-variable.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
+:root{--black:#070707;--border:rgba(255,255,255,.065);--red-bright:#d43040;--blue-bright:#2a6ad0;--offwhite:#e8e8e8;--text:#a0a0a0;--font:"Quicksand",sans-serif;--r:2px;--content-inline:5vw;--nav-height:64px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:100%}
+body{background:var(--black);color:var(--text);font-family:var(--font);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.site-nav{position:sticky;top:0;z-index:100;background:#070707;border-bottom:1px solid var(--border)}
+.site-nav-inner{max-width:1200px;margin:0 auto;height:var(--nav-height);display:flex;align-items:center;justify-content:center;padding:0 var(--content-inline);position:relative}
+.site-nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.site-nav-links a{font:700 1.05rem/normal var(--font);letter-spacing:.02em;text-transform:none;color:var(--offwhite);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:4px;width:32px;height:32px;background:none;border:0;cursor:pointer;padding:0}
+.nav-toggle .bar{width:100%;height:2px;background:var(--offwhite)}
+.hero{position:relative;width:100vw;margin-left:calc(-50vw + 50%);margin-bottom:4rem;height:calc(82vh - 60px);min-height:600px;max-height:820px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-video-wrap video{position:absolute;top:65%;left:50%;width:100%;height:140%;object-fit:cover;transform:translate(-50%,-50%);filter:brightness(.5) saturate(0) contrast(1.1)}
+.hero-fade-bottom{position:absolute;left:0;right:0;bottom:0;height:30%;z-index:2;background:linear-gradient(to top,#070707,transparent)}
+.hero-fade-top{position:absolute;top:-120px;left:0;right:0;height:calc(35% + 120px);z-index:2;background:linear-gradient(to bottom,#070707,transparent)}
+.hero-fade-left{position:absolute;inset:0;z-index:2;background:linear-gradient(to right,rgba(7,7,7,.42),transparent 55%)}
+.hero-content{position:relative;z-index:3;width:100%;max-width:1100px;padding:10vh var(--content-inline) 8.5vh;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.9rem}
+.hero-logo{width:100%;max-width:300px;height:auto;display:block;filter:brightness(.95) drop-shadow(0 4px 22px rgba(0,0,0,.75)) drop-shadow(0 0 34px rgba(0,0,0,.55));mix-blend-mode:screen}
+.hero-tagline{width:100%;max-width:none;color:var(--offwhite);font-size:1.6rem;line-height:1.75;white-space:nowrap}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:1.25rem}
+.btn-primary,.btn-ghost{font-family:var(--font);font-size:.9rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--r);white-space:nowrap}
+.hero-actions .btn-primary,.hero-actions .btn-ghost{min-height:44px;height:44px;min-width:160px;padding:0 1.15rem;font-size:.86rem;letter-spacing:.15em}
+.btn-primary{background:var(--blue-bright);color:var(--offwhite);border:0}.btn-ghost{color:rgba(232,232,232,.82);border:1px solid rgba(232,232,232,.24);background:none}
+@media(max-width:768px){:root{--content-inline:18px}.site-nav-inner{justify-content:flex-start}.nav-toggle{display:flex;margin-right:auto}.site-nav-links{position:absolute;top:calc(var(--nav-height) - 1rem);left:0;right:0;flex-direction:column;gap:0;background:#070707;border-bottom:1px solid var(--border);max-height:0;opacity:0;visibility:hidden;pointer-events:none;overflow:hidden;align-items:center;text-align:center}.site-nav-links.is-open{max-height:390px;padding:.35rem 0 1rem;opacity:1;visibility:visible;pointer-events:auto}.site-nav-links a{display:block;width:100%;padding:.42rem var(--content-inline);text-align:center;font-size:1rem}.hero{height:auto;min-height:420px;max-height:none;margin-bottom:0;padding:0 0 1rem}.hero-content{padding:.8rem var(--content-inline) 1.4rem;gap:1.5rem}.hero-logo{max-width:160px}.hero-tagline{width:auto;max-width:20rem;font-size:1.15rem;line-height:1.65;white-space:normal}.hero-actions{gap:1rem}.hero-actions .btn-primary,.hero-actions .btn-ghost{min-height:42px;height:42px;min-width:150px;font-size:.82rem;letter-spacing:.14em}.hero-video-wrap video{top:50%;left:52%;width:100%;height:100%;object-fit:contain;background:#070707;transform:translate(-50%,-50%) scale(1.1)}}
+@media(max-width:420px){:root{--content-inline:16px}.hero{min-height:340px;padding-bottom:.9rem}.hero-content{padding:.45rem var(--content-inline) 1.15rem;gap:1rem}.hero-logo{max-width:136px}.hero-tagline{max-width:17.5rem;font-size:1.04rem;line-height:1.6}.hero-actions{flex-direction:column;gap:.75rem}.hero-actions .btn-primary,.hero-actions .btn-ghost{min-height:40px;height:40px;font-size:.8rem;letter-spacing:.13em}}
+</style>
+<link rel="preload" href="styles.css?v=perf-1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="styles.css?v=perf-1"></noscript>
 
 <script type="application/ld+json">
 {
@@ -59,11 +87,12 @@
   </div>
 </nav>
 
+<main>
 <!-- Hero -->
 <section class="hero" id="top">
   <div class="hero-video-wrap">
 <video id="heroVideo" muted loop playsinline preload="none" poster="images/hero-frame.jpg">
-  <source data-src="video/hero-background-mobile.mp4" type="video/mp4">
+  <source data-src="hero-background-mobile-faststart.mp4" type="video/mp4">
   <source data-src="video/hero-background.mp4" type="video/mp4">
 </video>
     </div>
@@ -72,7 +101,7 @@
   <div class="hero-fade-left"></div>
 <div class="hero-content">
   <h1 class="sr-only">Evening Radio - Austin Blues Rock Band</h1>
-  <img class="hero-logo" src="images/white-logo.webp" alt="Evening Radio" width="600" height="240" fetchpriority="high" decoding="async">
+  <img class="hero-logo" src="images/white-logo.webp" alt="Evening Radio" width="501" height="256" fetchpriority="high">
   <p class="hero-tagline">A five-piece rock band with tight <br> grooves and a little blues.</p>
   <div class="hero-actions">
     <a href="#music" class="btn-primary">Listen</a>
@@ -368,11 +397,13 @@
   <a href="mailto:booking@eveningradio.com" class="btn-primary red">Send a Booking Request</a>
 </section>
 
+</main>
+
 <footer>
   <span class="footer-logo">Evening Radio</span>
   <span class="footer-copy">© <span id="yr"></span> Evening Radio — Austin, TX</span>
 </footer>
 
-<script src="script.js?v=reveal-1" defer></script>
+<script src="script.js?v=perf-1" defer></script>
 </body>
 </html>
