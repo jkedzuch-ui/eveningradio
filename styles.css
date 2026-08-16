@@ -290,10 +290,43 @@ hr.rule {
   pointer-events: none
 }
 
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block
+}
+
+.hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.5) saturate(0) contrast(1.1)
+}
+
+@media (max-width:768px) {
+  .hero-poster {
+    top: 50%;
+    left: 52%;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(1.1)
+  }
+
+  .hero-poster img {
+    object-fit: contain;
+    background: #070707
+  }
+}
+
 .hero-video-wrap video {
   position: absolute;
   top: 65%;
   left: 50%;
+  z-index: 1;
   width: 100%;
   height: 140%;
   object-fit: cover;
