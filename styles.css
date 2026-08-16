@@ -304,6 +304,15 @@ hr.rule {
   will-change: transform
 }
 
+.hero-video-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 40%, transparent 70%)
+}
+
 .hero-fade-bottom {
   position: absolute;
   left: 0;
