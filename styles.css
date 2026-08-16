@@ -304,15 +304,6 @@ hr.rule {
   will-change: transform
 }
 
-.hero-video-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.06) 40%, transparent 65%)
-}
-
 .hero-fade-bottom {
   position: absolute;
   left: 0;
@@ -1354,6 +1345,7 @@ footer {
     height: 100%;
     object-fit: contain;
     background: #070707;
+    transform: translate(-50%, -50%) scale(1.1);
     animation: none
   }
 
@@ -1555,6 +1547,7 @@ footer {
     height: 100%;
     object-fit: contain;
     background: #070707;
+    transform: translate(-50%, -50%) scale(1.1);
     animation: none
   }
 
