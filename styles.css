@@ -1349,14 +1349,10 @@ footer {
   }
 
   .hero-video-wrap video {
-    top: 55%;
-    width: 145%;
+    top: 50%;
+    width: 100%;
     height: 100%;
     animation: none
-  }
-
-  .hero-video-wrap video.is-playing {
-    animation: heropan 15s ease-in-out infinite alternate
   }
 
   .section,
@@ -1552,14 +1548,10 @@ footer {
   }
 
   .hero-video-wrap video {
-    top: 55%;
-    width: 145%;
+    top: 50%;
+    width: 100%;
     height: 100%;
     animation: none
-  }
-
-  .hero-video-wrap video.is-playing {
-    animation: heropan 15s ease-in-out infinite alternate
   }
 
   .hero-actions {
@@ -1834,16 +1826,6 @@ footer {
   .hero-tagline {
     white-space: normal;
     font-size: 0.9rem
-  }
-}
-
-@keyframes heropan {
-  from {
-    transform: translate(-50%, -50%)
-  }
-
-  to {
-    transform: translate(-62%, -50%)
   }
 }
 
