@@ -3,7 +3,7 @@
   src: url("./fonts/quicksand-variable.woff2") format("woff2");
   font-weight: 300 700;
   font-style: normal;
-  font-display: swap
+  font-display: optional
 }
 
 :root {
@@ -279,7 +279,8 @@ hr.rule {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  background: #070707
 }
 
 .hero-video-wrap {
@@ -287,7 +288,8 @@ hr.rule {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  pointer-events: none
+  pointer-events: none;
+  background: #070707
 }
 
 .hero-video-wrap video {
@@ -300,7 +302,8 @@ hr.rule {
   object-fit: cover;
   transform: translate(-50%, -50%);
   filter: brightness(0.5) saturate(0) contrast(1.1);
-  will-change: transform
+  will-change: transform;
+  background: #070707
 }
 
 .hero-fade-bottom {
