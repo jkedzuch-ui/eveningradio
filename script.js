@@ -124,10 +124,27 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentIdx = 0;
     let playing = false;
 
+    // Track rows are pre-rendered in the HTML (so there's no layout shift
+    // when the page loads). If they're already there, just wire up clicks.
+    // Otherwise (e.g. markup was stripped out), fall back to building them.
     function buildList() {
+      const existingRows = listEl.querySelectorAll('.track-row');
+
+      if (existingRows.length === TRACKS.length) {
+        existingRows.forEach(function (row, i) {
+          row.addEventListener('click', function () {
+            selectTrack(i, true);
+          });
+        });
+        return;
+      }
+
+      listEl.innerHTML = '';
+
       TRACKS.forEach(function (t, i) {
         const row = document.createElement('div');
         row.className = 'track-row' + (i === 0 ? ' is-active' : '');
+        row.dataset.src = t.src;
 
         row.innerHTML = `
           <div class="track-num">

@@ -1,11 +1,3 @@
-@font-face {
-  font-family: "Quicksand";
-  src: url("./fonts/quicksand-variable.woff2") format("woff2");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: optional
-}
-
 :root {
   --black: #070707;
   --dark: #0b0b0b;
